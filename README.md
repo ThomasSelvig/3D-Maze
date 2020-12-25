@@ -11,7 +11,7 @@ https://ThomasSelvig.github.io/3D-Maze/
 |`R` | Toggle Autorotation|
 |`Space` | Toggle fast speed|
 |`.`| Start maze generation|
-|`,`| Toggle wireframe mode|
+|`,`| Toggle wireframe mode (don't use this while animating!)|
 |`Mouse1`|Orbit camera manually|
 
 ### Tech used
