@@ -14,6 +14,7 @@ document.body.appendChild( renderer.domElement );
 const controls = new THREE.OrbitControls(camera, renderer.domElement);
 controls.enableDamping = true;
 controls.enablePan = false;
+controls.autoRotate = true;
 
 // add wireframe border
 // const _maze_area_geo = new THREE.BoxGeometry(width=21, height=21, depth=21);
@@ -36,7 +37,7 @@ scene.add(maze_area)
 // todo: add lighting, this doesn't work for some reason Æ
 
 // move camera out of "cube"
-camera.position.z = 25;
+camera.position.z = 20;
 controls.update();  // needs to be called after camera transformation
 
 function update_mesh(node) {
@@ -118,10 +119,10 @@ document.addEventListener("keydown", (e) => {
 			}
 		}
 	}
-	if (e.code == "Period") {
-		maze_gen(cy.$id("gz_node"));
-		update_all_nodes();
-	}
+	// if (e.code == "Period") {
+	// 	maze_gen(cy.$id("gz_node"));
+	// 	update_all_nodes();
+	// }
 	if (e.code == "Space") {
 		// swap variables
 		[ANIMATION_DELAY, ANIMATION_DELAY_ALT] = [ANIMATION_DELAY_ALT, ANIMATION_DELAY];
@@ -131,6 +132,11 @@ document.addEventListener("keydown", (e) => {
 	}
 }, false);
 
+// last changes before anim loop
+update_all_nodes();
+maze_gen(cy.$id("gz_node"));
+update_all_nodes();
+
 // main render loop
 function animate() {
 	requestAnimationFrame(animate);
@@ -139,5 +145,5 @@ function animate() {
 	
 	renderer.render(scene, camera);
 }
-update_all_nodes();
+
 animate();
